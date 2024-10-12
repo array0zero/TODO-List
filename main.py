@@ -10,17 +10,21 @@ class ToDoApp:
 
         self.tasks = []
 
-        # やることを入力するテキストボックス
-        self.entry_task = tk.Entry(root, width=50)
-        self.entry_task.pack(pady=10)
+        # フレームを作成
+        input_frame = tk.Frame(root)
+        input_frame.pack(pady=10)
 
-        # 入力したやることを追加処理するためのボタン
-        self.add_button = tk.Button(root, text="追加", command=self.add_task)
-        self.add_button.pack()
+        # やることを入力するテキストボックスをフレームに配置
+        self.entry_task = tk.Entry(input_frame, width=40)
+        self.entry_task.pack(side=tk.LEFT)
+
+        # 入力したやることを追加処理するためのボタンをフレームに配置
+        self.add_button = tk.Button(input_frame, text="追加", command=self.add_task)
+        self.add_button.pack(side=tk.LEFT)
 
         # 　やることの一覧を表示する部分
         self.task_list = tk.Listbox(root, width=50, height=10)
-        self.task_list.pack()
+        self.task_list.pack(padx=10)
 
         # 削除ボタン
         self.delete_button = tk.Button(root, text="削除", command=self.delete_task)
