@@ -66,11 +66,14 @@ class ToDoApp:
     # タスクの更新
     def update_list(self):
         self.task_list.delete(0, tk.END)
-        for task in self.tasks:
+        for i, task in enumerate(self.tasks):
             text = task["task"]
             if task["completed"]:
-                text = "[完了]" + text
-            self.task_list.insert(tk.END, task)
+                text = "[完了] " + text
+                self.task_list.insert(tk.END, text)
+                self.task_list.itemconfig(i, fg="gray", bg="lightgray")  # 完了したタスクを灰色で表示
+            else:
+                self.task_list.insert(tk.END, text)
 
 
 if __name__ == '__main__':
